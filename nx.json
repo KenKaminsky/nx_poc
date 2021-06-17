@@ -1,0 +1,40 @@
+{
+  "npmScope": "cambium-ufe",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "pza-next": {
+      "tags": []
+    },
+    "pza-next-e2e": {
+      "tags": [],
+      "implicitDependencies": ["pza-next"]
+    },
+    "shared-components": {
+      "tags": []
+    },
+    "tws-next": {
+      "tags": []
+    },
+    "tws-next-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tws-next"]
+    }
+  }
+}

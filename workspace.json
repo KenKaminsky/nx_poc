@@ -1,0 +1,197 @@
+{
+  "version": 2,
+  "projects": {
+    "pza-next": {
+      "root": "apps/pza-next",
+      "sourceRoot": "apps/pza-next",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/pza-next",
+            "outputPath": "dist/apps/pza-next"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "pza-next:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "pza-next:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "pza-next:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/pza-next"],
+          "options": {
+            "jestConfig": "apps/pza-next/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pza-next/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "pza-next-e2e": {
+      "root": "apps/pza-next-e2e",
+      "sourceRoot": "apps/pza-next-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pza-next-e2e/cypress.json",
+            "tsConfig": "apps/pza-next-e2e/tsconfig.e2e.json",
+            "devServerTarget": "pza-next:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pza-next:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pza-next-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shared-components": {
+      "root": "libs/shared-components",
+      "sourceRoot": "libs/shared-components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared-components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-components"],
+          "options": {
+            "jestConfig": "libs/shared-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tws-next": {
+      "root": "apps/tws-next",
+      "sourceRoot": "apps/tws-next",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/tws-next",
+            "outputPath": "dist/apps/tws-next"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "tws-next:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "tws-next:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "tws-next:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/tws-next"],
+          "options": {
+            "jestConfig": "apps/tws-next/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tws-next/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "tws-next-e2e": {
+      "root": "apps/tws-next-e2e",
+      "sourceRoot": "apps/tws-next-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tws-next-e2e/cypress.json",
+            "tsConfig": "apps/tws-next-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tws-next:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tws-next:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/tws-next-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "@emotion/styled",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "pza-next"
+}
